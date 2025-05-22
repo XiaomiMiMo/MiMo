@@ -118,7 +118,7 @@ MiMo-7B series
 
 ### SGLang Inference
 
-Thanks to the [contribution](https://github.com/sgl-project/sglang/pull/5921) from the SGLang team, we supported MiMo in SGLang mainstream within 24h with MTP coming soon.
+Thanks to the [MiMo model support](https://github.com/sgl-project/sglang/pull/5921) and [MTP](https://github.com/sgl-project/sglang/pull/6059) from the SGLang team, we supported MiMo in SGLang mainstream.
 
 Example Script
 
@@ -128,9 +128,15 @@ python3 -m uv pip install "sglang[all] @ git+https://github.com/sgl-project/sgla
 
 # Launch SGLang Server
 python3 -m sglang.launch_server --model-path XiaomiMiMo/MiMo-7B-RL --host 0.0.0.0 --trust-remote-code
+
+# Launch MTP Server
+
+python3 -m sglang.launch_server --model-path XiaomiMiMo/MiMo-7B-RL --trust-remote-code \
+--speculative-algorithm EAGLE --speculative-num-steps 1 --speculative-eagle-topk 1 \
+--speculative-num-draft-tokens 2  --mem-fraction 0.5
 ```
 
-Detailed usage can be found in [SGLang documents](https://docs.sglang.ai/backend/send_request.html). MTP will also be supported in 24h.
+Detailed usage can be found in [SGLang documents](https://docs.sglang.ai/backend/send_request.html).
 
 ### vLLM inference
 
