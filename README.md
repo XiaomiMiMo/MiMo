@@ -130,7 +130,6 @@ python3 -m uv pip install "sglang[all] @ git+https://github.com/sgl-project/sgla
 python3 -m sglang.launch_server --model-path XiaomiMiMo/MiMo-7B-RL --host 0.0.0.0 --trust-remote-code
 
 # Launch MTP Server
-
 python3 -m sglang.launch_server --model-path XiaomiMiMo/MiMo-7B-RL --trust-remote-code \
 --speculative-algorithm EAGLE --speculative-num-steps 1 --speculative-eagle-topk 1 \
 --speculative-num-draft-tokens 2  --mem-fraction 0.5
