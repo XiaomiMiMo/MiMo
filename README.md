@@ -253,6 +253,37 @@ print(tokenizer.decode(output.tolist()[0]))
 
 > We haven't verified MiMo with other inference engines and welcome contributions based on the model definition in the Huggingface repo 💻.
 
+## V. Deployment with Docker
+
+You can use the provided Dockerfile to easily build an environment for running MiMo models with vLLM.
+
+**1. Build the Docker image:**
+
+```bash
+docker build -t mimo-vllm .
+```
+
+**2. Run the vLLM server with a MiMo model:**
+
+You'll need to have a MiMo model downloaded locally. Mount the model directory into the container and pass the necessary arguments to the vLLM server.
+
+```bash
+# Example: Assuming your MiMo model is in /path/to/your/models/MiMo-7B-RL
+# and you want to make it available at /models/MiMo-7B-RL inside the container.
+docker run --gpus all -v /path/to/your/models/MiMo-7B-RL:/models/MiMo-7B-RL -p 8000:8000 mimo-vllm \
+  --model /models/MiMo-7B-RL \
+  --trust-remote-code \
+  --host 0.0.0.0
+  # Add any other vLLM arguments as needed, e.g., --port, --tensor-parallel-size
+```
+
+This will start the vLLM OpenAI-compatible server. You can then send requests to `http://localhost:8000`.
+
+**Note:**
+- Ensure you have NVIDIA drivers and Docker installed on your system.
+- The `--gpus all` flag makes all available GPUs accessible to the container. Adjust as needed.
+- The `register_mimo_in_vllm.py` script from the `registry` directory is automatically included and used due to the `PYTHONPATH` setup in the Dockerfile.
+
 ## V. Citation
 
 ```bibtex
