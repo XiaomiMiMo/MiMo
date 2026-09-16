@@ -35,7 +35,7 @@
 
 ## Updates
 
-[2025.05.30] We scaled the SFT dataset from approximately 500K to 6M instances and continuously expanding the RL training window size from 32K to 48K, the performance of [MiMo-7B-RL-0530](https://huggingface.co/XiaomiMiMo/MiMo-7B-RL-0530) on AIME24 can be continuously improved and eventually surpass that of DeepSeek R1 (79.8).
+[2025.05.30] We scaled the SFT dataset from approximately 500K to 6M instances and continuously expanded the RL training window size from 32K to 48K, the performance of [MiMo-7B-RL-0530](https://huggingface.co/XiaomiMiMo/MiMo-7B-RL-0530) on AIME24 can be continuously improved and eventually surpass that of DeepSeek R1 (79.8).
 
 <table>
   <thead>
@@ -98,7 +98,7 @@ We believe this report along with the models will provide valuable insights to d
 
 ## II. Model Details
 
-The MTP layers of MiMo-7B is tuned during pretraining and SFT and freezed during RL. With one MTP layer for speculative decoding, the acceptance rate is about 90%.
+The MTP layers of MiMo-7B are tuned during pretraining and SFT and frozen during RL. With one MTP layer for speculative decoding, the acceptance rate is about 90%.
 
 <p align="center">
   <img width="80%" src="https://github.com/XiaomiMiMo/MiMo/raw/main/figures/architecture.png?raw=true">
